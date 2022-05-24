@@ -33,12 +33,13 @@ const AvailableMeals = () => {
   const mealsList = DUMMY_MEALS.map((meal) => {
     // return <li>{meal.name}</li>;
     return (
-        <MealItem
-          key={meal.id}
-          name={meal.name}
-          description={meal.description}
-          price={meal.price}
-        />
+      <MealItem
+        id={meal.id} //this is the final step in fixing the id issue for accessability
+        key={meal.id}
+        name={meal.name}
+        description={meal.description}
+        price={meal.price}
+      />
     );
   });
 

@@ -8,7 +8,7 @@ const MealItemForm = (props) => {
         label="Amount"
         //   The item in the object input contain default attributes that we find on normal html input elements
         input={{
-          id: "Amount",
+          id: "amount_" + props.id, //this changed to allow the label to to point to its respective input, for accessability. after this we will go to MealItemForm in MealItem to accept the id prop
           type: "number",
           min: 1,
           max: 5,
