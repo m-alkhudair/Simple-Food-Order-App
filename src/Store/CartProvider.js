@@ -1,4 +1,3 @@
-import { act } from "@testing-library/react";
 import { useReducer } from "react";
 
 import CartContext from "./cart-context";
@@ -13,7 +12,7 @@ const defaultCartState = {
 const cartReducer = (state, action) => {
   if (action.type === "ADD") {
     // conact() because we want to always edit array in immutable ways, because we dont want to change the orginal array instead of editing the old array in memory so we return a new one
-    const updatedItems = state.items.concat(action.payload);
+    const updatedItems = state.items.concat(action.item);
     const updatedTotalAmount =
       state.totalAmount + action.item.price * action.item.amount;
 
@@ -32,10 +31,10 @@ const CartProvider = (props) => {
   );
 
   const addItemToCartHandler = (item) => {
-    dispatchCartAction({ type: "ADD", payload: item });
+    dispatchCartAction({ type: "ADD", item: item });
   };
   const removeItemFromCartHandler = (id) => {
-    dispatchCartAction({ type: "REMOVE", payload: id });
+    dispatchCartAction({ type: "REMOVE", item: id });
   };
 
   // real concrete object that is our context that we will maipulate and use
