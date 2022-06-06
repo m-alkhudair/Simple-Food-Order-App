@@ -18,12 +18,12 @@ const cartReducer = (state, action) => {
       (item) => item.id === action.item.id
     );
     const existingCartItem = state.item[existingCartItemIndex];
-    let updatedItem;
+    // let updatedItem;
     let updatedItems;
 
     // check if truthy
     if (existingCartItem) {
-      updatedItem = {
+      const updatedItem = {
         ...existingCartItem,
         amount: existingCartItem.amount + action.item.amount
       }
@@ -31,8 +31,10 @@ const cartReducer = (state, action) => {
       updatedItems[existingCartItemIndex] = updatedItem;
     } else {
       // the case its a brand new item
-      updatedItem = {...action.item};
-      updatedItems = state.items.concat(updatedItem);
+      // updatedItem = {...action.item};
+      // updatedItems = state.items.concat(updatedItem);
+      updatedItems = state.items.concat(action.item);
+
     }
 
     // conact() because we want to always edit array in immutable ways, because we dont want to change the orginal array instead of editing the old array in memory so we return a new one
