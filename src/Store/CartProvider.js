@@ -28,6 +28,7 @@ const cartReducer = (state, action) => {
         amount: existingCartItem.amount + action.item.amount
       }
       updatedItems = [...state.items];
+      // overriding the old item in the array with the updated item
       updatedItems[existingCartItemIndex] = updatedItem;
     } else {
       // the case its a brand new item
