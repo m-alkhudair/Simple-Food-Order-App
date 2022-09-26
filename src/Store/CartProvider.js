@@ -77,6 +77,10 @@ const cartReducer = (state, action) => {
     }
   }
 
+  if (action.type === 'CLEAR') {
+    return defaultCartState;
+  }
+
   // this below is a fallback incase we had another action type not accounted for
   return defaultCartState;
 };
@@ -93,6 +97,9 @@ const CartProvider = (props) => {
   const removeItemFromCartHandler = (id) => {
     dispatchCartAction({ type: "REMOVE", id: id });
   };
+  const clearCartHandler = () => {
+    dispatchCartAction({ type: "CLEAR" });
+  };
 
   // real concrete object that is our context that we will maipulate and use
   const cartContext = {
@@ -100,6 +107,7 @@ const CartProvider = (props) => {
     totalAmount: cartState.totalAmount,
     addItem: addItemToCartHandler,
     removeItem: removeItemFromCartHandler,
+    clearCart: clearCartHandler
   };
   return (
     <CartContext.Provider value={cartContext}>
